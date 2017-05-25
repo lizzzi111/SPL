@@ -20,11 +20,11 @@ get_pc_all = function(d){
   }
 }
 
-get_pca_imp <- function(d){
+get_pca_imp <- function(d, threshold=0.9){
   if(all(sapply(d, is.numeric))){
     fit <- prcomp(d)    
     cum_prop <- summary(fit)$importance['Cumulative Proportion',]    
-    d <- cbind(d, fit$x[,1:min(which(cum_prop>0.9))])    
+    d <- cbind(d, fit$x[,1:min(which(cum_prop>threshold))])    
     return(d) 
   } else {
     cat("Input has to be a data frame of numeric data or a matrix.")
