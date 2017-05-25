@@ -12,7 +12,7 @@ nhcl = function(test_data, n_cluster){
   return(test_data)
 }
 
-get_difference = function(test_data, n_cluster=NULL){
+cldiff = function(test_data, n_cluster=NULL){
   if(!is.null(n_cluster) & !("cluster"%in%names(test_data))){
     test_data = nhcl(test_data, n_cluster)
   }

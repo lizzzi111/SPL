@@ -2,7 +2,7 @@
 # input: data frame with arbitrary number of numeric variables (only numerics), or matrix
 # output: df with new columns
 
-get_pc = function(d){
+pca_2 = function(d){
   if(all(sapply(d, is.numeric))){
     d = cbind(d, as.data.frame(prcomp(d)$x)[,c("PC1", "PC2")])
     return(d)
@@ -11,7 +11,7 @@ get_pc = function(d){
   }
 }
 
-get_pc_all = function(d){
+pca_all = function(d){
   if(all(sapply(d, is.numeric))){
     d = cbind(d, as.data.frame(prcomp(d)$x))
     return(d)
@@ -20,7 +20,7 @@ get_pc_all = function(d){
   }
 }
 
-get_pca_imp = function(d, threshold=0.9){
+pca_imp = function(d, threshold=0.9){
   if(all(sapply(d, is.numeric))){
     fit = prcomp(d)    
     cum_prop = summary(fit)$importance['Cumulative Proportion',]    
