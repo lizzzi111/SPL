@@ -7,5 +7,7 @@ hetero_test <-  function(dep, indep){
   library(lmtest)
   fit = lm(dep~.,indep)
   res_fit =  bptest(fit) #summary(lm(fit$residuals^2~.,indep))
-  ifelse(res_fit$p.value>0.05, return("Assumption of homoscedasticity holds"), return("Assumption of homoscedasticity is rejected"))
+  ifelse(res_fit$p.value>0.05, 
+         return("Assumption of homoscedasticity holds"), 
+         return("Assumption of homoscedasticity is rejected"))
 }
