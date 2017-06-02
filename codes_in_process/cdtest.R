@@ -13,7 +13,7 @@ cdtest =  function(x, y=NULL, alpha=0.05){
     res = fisher.test(l)
     cat("Data have less than 5 observations in at least one of the sells in the contingency table,
           Chi-Square test cannot be applied, accortingly, the Fisher exact test is used.\n")
-    if(res$p.value>alpha){
+    if(res$p.value<alpha){
       cat("Used level of significance is", paste0(alpha,"."), "The Zero hypothesis is rejected: variables are independent.\n")
     } else {
       cat("Used level of significance is", paste0(alpha,"."),"The Zero hypothesis is not rejected: variables are dependent.\n")
@@ -24,7 +24,7 @@ cdtest =  function(x, y=NULL, alpha=0.05){
     res = chisq.test(l)
     cat("The Chi-Square test is applied.\n")
     
-    if(res$p.value>alpha){
+    if(res$p.value<alpha){
       cat("Used level of significance is", paste0(alpha,"."),"The Zero hypothesis is rejected: variables are independent.\n")
       }
     else{
