@@ -23,9 +23,9 @@ prog_rf = predict(fit_rf, newdata = data)
 qqnorm(fit$residuals)
 
 
-control <- trainControl(method="repeatedcv", number=10, repeats=3)
+control = trainControl(method="repeatedcv", number=10, repeats=3)
 # train the model
-model <- train(G3~., data1, method="rf", trControl=control, tuneLength=5)
+model = train(G3~., data1, method="rf", trControl=control, tuneLength=5)
 # summarize the model
 print(model)
 plot(model)

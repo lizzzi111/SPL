@@ -81,6 +81,11 @@ plot_ly(data, x = ~Walc, y = ~G1, type="box")
 
 #we can see that means within each alcohol consumption level is quite similar
 source("../SPL/codes_in_process/smart_anova.R")
+grades_vars = c(paste0("data$", c("G1","G2","G3")))
+group_vars = c(paste0("data$", c("Walc","Dalc","school", "Fedu", "Medu", "Pstatus", "Mjob", "Fjob")))
+
+sapply(data[,names(data)%in%grades_vars], function(dep) sapply(data[,names(data)%in%group_vars], function(indep) smart_anova(dep,indep)))
+
 smart_anova(data$G3, data$Dalc)
 smart_anova(data$G3, data$Walc)
 

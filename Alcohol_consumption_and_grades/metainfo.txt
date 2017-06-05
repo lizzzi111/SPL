@@ -1,0 +1,13 @@
+Name of Quantlet: SPL_alc_grad
+
+Published in: Statistical Programming Languages
+
+Description: Exploration of the dependency between students alcohol consumption and their grades. Using SPL_smart_anova, SPL_cdtest, plotly, ggplot
+
+Keywords: explorative, kruskal, plotly, visualization, social
+
+Author:
+
+Submitted:
+
+Datafile: student_mat.csv, student_por.csv, studen_mat_fact.rds, studen_por_fact.rds
