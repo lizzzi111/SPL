@@ -33,6 +33,14 @@ mean(fit$residuals)
 mean(fit_out$residuals)
 # in both cases mean is approximately zero = the assumption holds
 
+# Autocorrelation of residuals
+acf(fit$residuals) 
+acf(fit_out$residuals) 
+# visually everything is fine, however, we can also test it
+lawstat::runs.test(fit$residuals)
+# p-value > 0.05, we do not reject the zero hypothesis, the distribution of residuals is random, Runs test for randomness
+lmtest::dwtest(fit)
+
 # 3) Full rank (check multicollinearity)
 cor(data_out)
 # we do not have 1s, assumption holds
