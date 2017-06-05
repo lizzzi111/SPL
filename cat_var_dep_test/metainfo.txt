@@ -1,0 +1,20 @@
+Name of Quantlet: SPL_cdtest
+
+Published in: Statistical Programming Languages
+
+Description: Test on dependency of two categorical variables: produces a contingency table, if some of the sells have less than 5 observations, carries out Fisher test, whereas, if cells have more than 5 observation the chi square test is maintained.
+Moreover, if the Fisher test produces an error message, which is usually made if we have large contingency table and fisher test cannot be carried out, Fisher Test with Monte Carlo simulation is maintained.
+
+Keywords: test, categorical, explorative
+
+Author:
+
+Submitted:
+
+Datafile:
+
+Input: Either two vectors with factor variables cdtest(x,y), or a data frame with two variables cdtest(x), and the alpha significancy level, which is by default 0.05
+
+Output: p-value of the test and the textual message containing the answer on whether are these variable independent or not for a given alpha
+
+Example: data("ToothGrowth"); cdtest(ToothGrowth$supp, ToothGrowth$dose)
