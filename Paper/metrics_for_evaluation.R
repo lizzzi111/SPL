@@ -18,7 +18,7 @@ rmse  = function(y_pred, y_true){
   } else if (!is.numeric(y_pred)|!is.numeric(y_pred)){
     return("Root mean sqared can be calculated only on numeric data")
   } else {
-    pcc =   sum(y_pred==y_true)/length(y_pred)
-    return(pcc)    
+    rmse =   sqrt(mean((y_true - y_pred)^2))
+    return(rmse)    
   }
 }
