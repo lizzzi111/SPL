@@ -1,6 +1,27 @@
 binary = read.csv2("./results_analysis/binary.csv")
-library(ggplot2)
-plot(pcc~model, binary, main = "Binary Performance Results")
+regression = read.csv2("./results_analysis/regression.csv")
+multiclass = read.csv2("./results_analysis/multiclass.csv")
+# here the functionality for result plots will be proposed
+
+result_plots = function(df, goal_var){
+  if ("ggplot2" %in% rownames(installed.packages()) == FALSE) {
+    install.packages("ggplot2")
+  }
+  library(ggplot2)
+  if(is.numeric(df$goal_var)){
+    boxplot = plot(rmse~model, df, main = "Regression Performance Results")
+  } else {
+    if(length(levels(df$goal_var))>2){
+      boxplot = plot(pcc~model, df, main = "Multiclass Performance Results")
+    } else {
+      boxplot = plot(pcc~model, df, main = "Binary Performance Results")
+    }
+  }
+}
+
+
+
+
 # all
 qplot(data=binary,
       y=pcc,
