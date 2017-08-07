@@ -1,13 +1,6 @@
 source(file = "./predictions/SPL_predictions.R")
 source(file = "./predictions/metrics_for_evaluation.R")
-
-model_setup = list("NN" = list(tuneGrid = expand.grid(decay = 10^seq(-4, 0, 0.5), size = seq(3, 13, 2)), maxit = 100, method = "nnet"), 
-                   "RF" = list(tuneGrid = expand.grid(mtry = c(5, 8, 10, 12, 15, 20)), ntree = 100, method = "rf"), 
-                   "rpart" = list(tuneGrid = expand.grid(cp = seq(0.001, 0.1, 0.01)), method = "rpart"), 
-                   "SVMradial" = list(tuneGrid = expand.grid(sigma = 2^seq(-12, -1), C = 2^seq(-12, 12)), method = "svmRadial"), 
-                   "SVMlinear" = list(tuneGrid = expand.grid(C = 2^seq(-12, 12)), method = "svmLinear"))
-
-modellist = c("SVMradial", "NN", "RF", "rpart")
+source(file = "./predictions/model_setup.R")
 
 data_reg_mat = readRDS("./data/student-mat_reg.rds")
 
@@ -18,10 +11,10 @@ mat_reg_fitA = modelsLib(data = data_reg_mat,
                                  metric = "RMSE",
                                  model_setup = model_setup )
 
-min(mat_reg_fitA$SVMradial$results$RMSE)
+min(mat_reg_fitA$SVM$results$RMSE)
 min(mat_reg_fitA$NN$results$RMSE)
 min(mat_reg_fitA$RF$results$RMSE)
-min(mat_reg_fitA$rpart$results$RMSE)
+min(mat_reg_fitA$DT$results$RMSE)
 
 saveRDS(mat_reg_fitA, "./predictions/models/mat_reg_fitA.RDS")
 
@@ -36,10 +29,10 @@ mat_reg_fitB = modelsLib(data = data_reg_mat[, !(colnames(data_reg_mat)%in%"G2")
                                   metric = "RMSE",
                                   model_setup = model_setup )
 
-min(mat_reg_fitB$SVMradial$results$RMSE)
+min(mat_reg_fitB$SVM$results$RMSE)
 min(mat_reg_fitB$NN$results$RMSE)
 min(mat_reg_fitB$RF$results$RMSE)
-min(mat_reg_fitB$rpart$results$RMSE)
+min(mat_reg_fitB$DT$results$RMSE)
 
 saveRDS(mat_reg_fitB, "./predictions/models/mat_reg_fitB.RDS")
 # for the Naive Bayes in the paper G1 was used in the setting B
@@ -53,10 +46,10 @@ mat_reg_fitC = modelsLib(data = data_reg_mat[, !(colnames(data_reg_mat)%in%c("G2
                                   metric = "RMSE",
                                   model_setup = model_setup )
 
-min(mat_reg_fitC$SVMradial$results$RMSE)
+min(mat_reg_fitC$SVM$results$RMSE)
 min(mat_reg_fitC$NN$results$RMSE)
 min(mat_reg_fitC$RF$results$RMSE)
-min(mat_reg_fitC$rpart$results$RMSE)
+min(mat_reg_fitC$DT$results$RMSE)
 
 saveRDS(mat_reg_fitC, "./predictions/models/mat_reg_fitC.RDS")
 # for the Naive Bayes in the paper the average output value was used in the setting C
@@ -75,10 +68,10 @@ por_reg_fitA = modelsLib(data = data_reg_por,
                                   metric = "RMSE",
                                   model_setup = model_setup )
 
-min(por_reg_fitA$SVMradial$results$RMSE)
+min(por_reg_fitA$SVM$results$RMSE)
 min(por_reg_fitA$NN$results$RMSE)
 min(por_reg_fitA$RF$results$RMSE)
-min(por_reg_fitA$rpart$results$RMSE)
+min(por_reg_fitA$DT$results$RMSE)
 
 saveRDS(por_reg_fitA, "./predictions/models/por_reg_fitA.RDS")
 
@@ -93,10 +86,10 @@ por_reg_fitB = modelsLib(data = data_reg_por[, !(colnames(data_reg_por)%in%"G2")
                                   metric = "RMSE",
                                   model_setup = model_setup )
 
-min(por_reg_fitB$SVMradial$results$RMSE)
+min(por_reg_fitB$SVM$results$RMSE)
 min(por_reg_fitB$NN$results$RMSE)
 min(por_reg_fitB$RF$results$RMSE)
-min(por_reg_fitB$rpart$results$RMSE)
+min(por_reg_fitB$DT$results$RMSE)
 
 saveRDS(por_reg_fitB, "./predictions/models/por_reg_fitB.RDS")
 # for the Naive Bayes in the paper G1 was used in the setting B
@@ -110,10 +103,10 @@ por_reg_fitC = modelsLib(data = data_reg_por[, !(colnames(data_reg_por)%in%c("G2
                                   metric = "RMSE",
                                   model_setup = model_setup )
 
-min(por_reg_fitC$SVMradial$results$RMSE)
+min(por_reg_fitC$SVM$results$RMSE)
 min(por_reg_fitC$NN$results$RMSE)
 min(por_reg_fitC$RF$results$RMSE)
-min(por_reg_fitC$rpart$results$RMSE)
+min(por_reg_fitC$DT$results$RMSE)
 
 saveRDS(por_reg_fitC, "./predictions/models/por_reg_fitC.RDS")
 # for the Naive Bayes in the paper the average output value was used in the setting C

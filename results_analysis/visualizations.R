@@ -8,18 +8,40 @@ result_plots = function(df, goal_var){
     install.packages("ggplot2")
   }
   library(ggplot2)
+  
+  regr_title = "Regression Performance Results"
+  bin_title = "Binary Performance Results"
+  mult_title = "Multiclass Performance Results"
+
+
   if(is.numeric(df$goal_var)){
-    boxplot = plot(rmse~model, df, main = "Regression Performance Results")
+    accuracy = rmse
+    title = regr_title
   } else {
     if(length(levels(df$goal_var))>2){
-      boxplot = plot(pcc~model, df, main = "Multiclass Performance Results")
+      accuracy = pcc
+      title = mult_title
     } else {
-      boxplot = plot(pcc~model, df, main = "Binary Performance Results")
+      accuracy = df$pcc
+      title = bin_title
     }
   }
+  
+  boxplot = plot(accuracy~model, df, main = title)
+  line_plot = ggplot(df, aes(x=model, y=accuracy, colour = Input_type, shape=Input_type, group= Input_type))+
+    geom_line(size=2) +
+    geom_point(size=4) +
+    facet_grid(df$Class~.) +
+    theme(text = element_text(size=15),
+          axis.text.x = element_text(angle=90, hjust=1), plot.title = element_text(size = 15,lineheight=.8, face="bold")) + 
+    ggtitle(title)+theme_bw()
+  output = list(boxplot, line_plot)
+  return(output)
 }
 
-
+ff = result_plots(binary, "G3")
+result_plots(multiclass, "G3")
+result_plots(regression, "G3")
 
 
 # all
@@ -59,4 +81,4 @@ ggplot(binary, aes(x=model, y=pcc, colour = Inut_type, shape=Inut_type, group= I
    facet_grid(binary$Class~.) +
    theme(text = element_text(size=15),
   axis.text.x = element_text(angle=90, hjust=1), plot.title = element_text(size = 15,lineheight=.8, face="bold")) + 
-  ggtitle("Binary Performance Results")
+  ggtitle("Binary Performance Results")+theme_bw()

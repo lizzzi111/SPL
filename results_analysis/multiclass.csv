@@ -1,4 +1,4 @@
-Input_type;pcc;model;Class
+Inpput_type;pcc;model;Class
 A;78,481;NV;M
 B;60,506;NV;M
 C;32,911;NV;M
@@ -21,11 +21,11 @@ A;78,487;DT;M
 B;60,569;DT;M
 C;37,192;DT;M
 A;75,787;DT;P
-B;59,330;DT;P
+B;59,33;DT;P
 C;36,225;DT;P
 A;77,503;RF;M
 B;57,168;RF;M
 C;34,192;RF;M
 A;75,014;RF;P
-B;57,920;RF;P
+B;57,92;RF;P
 C;36,553;RF;P

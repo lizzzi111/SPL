@@ -1,13 +1,6 @@
 source(file = "./predictions/SPL_predictions.R")
 source(file = "./predictions/metrics_for_evaluation.R")
-
-model_setup = list("NN" = list(tuneGrid = expand.grid(decay = 10^seq(-4, 0, 0.5), size = seq(3, 13, 2)), maxit = 100, method = "nnet"), 
-                   "RF" = list(tuneGrid = expand.grid(mtry = c(5, 8, 10, 12, 15, 20)), ntree = 100, method = "rf"), 
-                   "rpart" = list(tuneGrid = expand.grid(cp = seq(0.001, 0.1, 0.01)), method = "rpart"), 
-                   "SVMradial" = list(tuneGrid = expand.grid(sigma = 2^seq(-12, -1), C = 2^seq(-12, 12)), method = "svmRadial"), 
-                   "SVMlinear" = list(tuneGrid = expand.grid(C = 2^seq(-12, 12)), method = "svmLinear"))
-
-modellist = c("SVMradial", "NN", "RF", "rpart")
+source(file = "./predictions/model_setup.R")
 
 data_mul_mat = readRDS("./data/student-mat_multiclass.rds")
 
@@ -18,10 +11,10 @@ mat_mul_fitA = modelsLib(data = data_mul_mat,
                                   metric = "Accuracy",
                                   model_setup = model_setup )
 
-max(mat_mul_fitA$SVMradial$results$Accuracy)
+max(mat_mul_fitA$SVM$results$Accuracy)
 max(mat_mul_fitA$NN$results$Accuracy, na.rm = TRUE)
 max(mat_mul_fitA$RF$results$Accuracy)
-max(mat_mul_fitA$rpart$results$Accuracy)
+max(mat_mul_fitA$DT$results$Accuracy)
 
 saveRDS(mat_mul_fitA, "./predictions/models/mat_mul_fitA.RDS")
 
@@ -36,10 +29,10 @@ mat_mul_fitB = modelsLib(data = data_mul_mat[, !(colnames(data_mul_mat)%in%"G2")
                                   metric = "Accuracy",
                                   model_setup = model_setup )
 
-max(mat_mul_fitB$SVMradial$results$Accuracy)
+max(mat_mul_fitB$SVM$results$Accuracy)
 max(mat_mul_fitB$NN$results$Accuracy, na.rm = TRUE)
 max(mat_mul_fitB$RF$results$Accuracy)
-max(mat_mul_fitB$rpart$results$Accuracy)
+max(mat_mul_fitB$DT$results$Accuracy)
 
 saveRDS(mat_mul_fitB, "./predictions/models/mat_mul_fitB.RDS")
 # for the Naive Bayes in the paper G1 was used in the setting B
@@ -53,10 +46,10 @@ mat_mul_fitC = modelsLib(data = data_mul_mat[, !(colnames(data_mul_mat)%in%c("G1
                                   metric = "Accuracy",
                                   model_setup = model_setup )
 
-max(mat_mul_fitC$SVMradial$results$Accuracy)
+max(mat_mul_fitC$SVM$results$Accuracy)
 max(mat_mul_fitC$NN$results$Accuracy)
 max(mat_mul_fitC$RF$results$Accuracy)
-max(mat_mul_fitC$rpart$results$Accuracy)
+max(mat_mul_fitC$DT$results$Accuracy)
 
 saveRDS(mat_mul_fitC, "./predictions/models/mat_mul_fitC.RDS")
 # for the Naive Bayes in the paper the most frequent value was used in the setting C
@@ -76,10 +69,10 @@ por_mul_fitA = modelsLib(data = data_mul_por,
                                   metric = "Accuracy",
                                   model_setup = model_setup )
 
-max(por_mul_fitA$SVMradial$results$Accuracy)
+max(por_mul_fitA$SVM$results$Accuracy)
 max(por_mul_fitA$NN$results$Accuracy, na.rm = TRUE)
 max(por_mul_fitA$RF$results$Accuracy)
-max(por_mul_fitA$rpart$results$Accuracy)
+max(por_mul_fitA$DT$results$Accuracy)
 
 saveRDS(por_mul_fitA, "./predictions/models/por_mul_fitA.RDS")
 
@@ -94,10 +87,10 @@ por_mul_fitB = modelsLib(data = data_mul_por[, !(colnames(data_mul_por)%in%"G2")
                                   metric = "Accuracy",
                                   model_setup = model_setup )
 
-max(por_mul_fitB$SVMradial$results$Accuracy)
+max(por_mul_fitB$SVM$results$Accuracy)
 max(por_mul_fitB$NN$results$Accuracy, na.rm = TRUE)
 max(por_mul_fitB$RF$results$Accuracy)
-max(por_mul_fitB$rpart$results$Accuracy)
+max(por_mul_fitB$DT$results$Accuracy)
 
 saveRDS(por_mul_fitB, "./predictions/models/por_mul_fitB.RDS")
 # for the Naive Bayes in the paper G1 was used in the setting B
@@ -111,10 +104,10 @@ por_mul_fitC = modelsLib(data = data_mul_por[, !(colnames(data_mul_por)%in%c("G2
                                   metric = "Accuracy",
                                   model_setup = model_setup )
 
-max(por_mul_fitC$SVMradial$results$Accuracy)
+max(por_mul_fitC$SVM$results$Accuracy)
 max(por_mul_fitC$NN$results$Accuracy)
 max(por_mul_fitC$RF$results$Accuracy)
-max(por_mul_fitC$rpart$results$Accuracy)
+max(por_mul_fitC$DT$results$Accuracy)
 
 saveRDS(por_mul_fitC, "./predictions/models/por_mul_fitC.RDS")
 # for the Naive Bayes in the paper the average output value was used in the setting C
