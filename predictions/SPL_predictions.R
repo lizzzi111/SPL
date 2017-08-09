@@ -9,18 +9,16 @@ modelsLib = function(formula, data, modellist = c("RF"), model_setup,
                               metric , model_control = NULL, preProcess = NULL) {
   list.of.packages <- c("doParallel","foreach", "caret", "randomForest", "e1071")
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-  if(length(new.packages)) install.packages(new.packages)
+  if(length(new.packages)) install.packages(new.packages, dependencies = TRUE)
   library(caret); library(foreach); library(doParallel); library(e1071); library(randomForest)
   
   # Parallelization
   runParallel = detectCores() -1
   # Setup up parallel backend
-  ##### Setting up parallelization
-  cl <- makeCluster(min(detectCores()-1, runParallel))
-  #, outfile="") # This redirects the output to the R master console but not in RStudio
-  # on.exit(stopCluster(cl))
-  registerDoParallel(cl)
-  message(paste("\n Registered number of cores:\n",getDoParWorkers(),"\n"))
+  # Detect number of cores and register all of them minus 1 as our working cluster
+  cores <- makeCluster(min(detectCores()-1, runParallel))
+  registerDoParallel(cores)
+  cat(paste(getDoParWorkers(),"cores are registered to a cluster.\n"))
   
   start.time = Sys.time()
   
@@ -36,10 +34,10 @@ modelsLib = function(formula, data, modellist = c("RF"), model_setup,
   
   
   # Training use caret package
-  message("Start model training")
+  cat("Start model training \n")
   modelLibrary = list()
   for (model in modellist) {
-    message(paste("Start training model", model, "at", Sys.time()))
+    cat(paste("Start training model", model, "at", Sys.time(), "\n"))
     modelObject = try(do.call(
       caret::train, c(list(form = formula, 
                            data = data, 
@@ -57,9 +55,10 @@ modelsLib = function(formula, data, modellist = c("RF"), model_setup,
     rm(modelObject)
   }
   end.time = Sys.time()  # Print time
-  message(paste("Training time:", end.time - start.time))
+  cat(paste("Training time:", round(end.time - start.time,2), "\n"))
   
-  stopCluster(cl)
+  stopCluster(cl = cores)
+  cat("Cluster closed")
   
   return(modelLibrary)
 }
