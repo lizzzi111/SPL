@@ -9,7 +9,7 @@ mat_reg_fitA = modelsLib(data = data_reg_mat,
                                  formula = G3~., 
                                  modellist = modellist,
                                  metric = "RMSE",
-                                 model_setup = model_setup )
+                                 model_setup = model_setup_reg )
 
 min(mat_reg_fitA$SVM$results$RMSE)
 min(mat_reg_fitA$NN$results$RMSE)
@@ -27,7 +27,7 @@ mat_reg_fitB = modelsLib(data = data_reg_mat[, !(colnames(data_reg_mat)%in%"G2")
                                   formula = G3~., 
                                   modellist = modellist,
                                   metric = "RMSE",
-                                  model_setup = model_setup )
+                                  model_setup = model_setup_reg )
 
 min(mat_reg_fitB$SVM$results$RMSE)
 min(mat_reg_fitB$NN$results$RMSE)
@@ -44,7 +44,7 @@ mat_reg_fitC = modelsLib(data = data_reg_mat[, !(colnames(data_reg_mat)%in%c("G2
                                   formula = G3~., 
                                   modellist = modellist,
                                   metric = "RMSE",
-                                  model_setup = model_setup )
+                                  model_setup = model_setup_reg )
 
 min(mat_reg_fitC$SVM$results$RMSE)
 min(mat_reg_fitC$NN$results$RMSE)
@@ -66,7 +66,7 @@ por_reg_fitA = modelsLib(data = data_reg_por,
                                   formula = G3~., 
                                   modellist = modellist,
                                   metric = "RMSE",
-                                  model_setup = model_setup )
+                                  model_setup = model_setup_reg )
 
 min(por_reg_fitA$SVM$results$RMSE)
 min(por_reg_fitA$NN$results$RMSE)
@@ -84,7 +84,7 @@ por_reg_fitB = modelsLib(data = data_reg_por[, !(colnames(data_reg_por)%in%"G2")
                                   formula = G3~., 
                                   modellist = modellist,
                                   metric = "RMSE",
-                                  model_setup = model_setup )
+                                  model_setup = model_setup_reg )
 
 min(por_reg_fitB$SVM$results$RMSE)
 min(por_reg_fitB$NN$results$RMSE)
@@ -101,7 +101,7 @@ por_reg_fitC = modelsLib(data = data_reg_por[, !(colnames(data_reg_por)%in%c("G2
                                   formula = G3~., 
                                   modellist = modellist,
                                   metric = "RMSE",
-                                  model_setup = model_setup )
+                                  model_setup = model_setup_reg )
 
 min(por_reg_fitC$SVM$results$RMSE)
 min(por_reg_fitC$NN$results$RMSE)
