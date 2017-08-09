@@ -1,5 +1,4 @@
-# Function checks for zero Variance Predictors, duplicates,
-# highly correlated variables.
+# Function checks for zero Variance Predictors, duplicates, highly correlated variables.
 # Moreover, it returnes corelation table, summary, pairs of highly corelated predictors
 # for a given threshold and variables having variance close to zero
 
@@ -55,3 +54,26 @@ cdesc = function(df, goal_var, dropDuplicates = FALSE, cor_cutoff = 0.9){
   }
   return(output)
 }
+
+
+# EXAMPLE ON THREE TYPES OF DATA FOR OUR BOTH DATASETS
+# REGRESSION
+math_reg = readRDS("./data/student-mat_reg.rds")
+math_reg_desc = cdesc(math_reg, "G3")
+
+port_reg = readRDS("./data/student-por_reg.rds")
+port_reg_desc = cdesc(port_reg, "G3")
+
+# BINARY
+math_bin = readRDS("./data/student-mat_binary.rds")
+math_bin_desc = cdesc(math_bin, "G3")
+
+port_bin = readRDS("./data/student-por_binary.rds")
+port_bin_desc = cdesc(port_bin, "G3")
+
+# MULTICLASS
+math_mul = readRDS("./data/student-mat_multiclass.rds")
+math_mul_desc = cdesc(math_mul, "G3")
+
+port_mul = readRDS("./data/student-por_multiclass.rds")
+port_mul_desc = cdesc(port_mul, "G3")
