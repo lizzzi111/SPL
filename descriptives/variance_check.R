@@ -1,11 +1,9 @@
-# This is a helping function to identify variables having only one constant value
+# This is a helper function to identify variables having only one constant value
 check_unique = function(df) {
   out = lapply(df, function(x) length(unique(x)))
   want = which(!out > 1)
   unlist(want)
 }
-
-
 
 variance_check = function(df, goal_var){
   # First we drop the dependent variable, since we check only predictors
