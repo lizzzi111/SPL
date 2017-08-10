@@ -7,7 +7,7 @@
 
 modelsLib = function(formula, data, modellist = c("RF"), model_setup, 
                               metric , model_control = NULL, preProcess = NULL) {
-  list.of.packages <- c("doParallel","foreach", "caret", "randomForest", "e1071")
+  list.of.packages <- c("doParallel","foreach", "caret")
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)) install.packages(new.packages, dependencies = TRUE)
   library(caret); library(foreach); library(doParallel); library(e1071); library(randomForest)
@@ -16,8 +16,8 @@ modelsLib = function(formula, data, modellist = c("RF"), model_setup,
   runParallel = detectCores() -1
   # Setup up parallel backend
   # Detect number of cores and register all of them minus 1 as our working cluster
-  cores <- makeCluster(min(detectCores()-1, runParallel))
-  registerDoParallel(cores)
+  cl = makeCluster(min(detectCores()-1, runParallel))
+  registerDoParallel(cl)
   cat(paste(getDoParWorkers(),"cores are registered to a cluster.\n"))
   
   start.time = Sys.time()
@@ -29,6 +29,7 @@ modelsLib = function(formula, data, modellist = c("RF"), model_setup,
     model_control = trainControl(method = "cv", number = 10, repeats = 200, 
                                  savePredictions = FALSE, 
                                  classProbs = ifelse(is.factor(y), TRUE, FALSE),
+                                 allowParallel = TRUE,
                                  returnData = FALSE)
   }
   
@@ -57,7 +58,7 @@ modelsLib = function(formula, data, modellist = c("RF"), model_setup,
   end.time = Sys.time()  # Print time
   cat(paste("Training time:", round(end.time - start.time,2), "\n"))
   
-  stopCluster(cl = cores)
+  stopCluster(cl)
   cat("Cluster closed")
   
   return(modelLibrary)
