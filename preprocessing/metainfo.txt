@@ -7,3 +7,7 @@ Description: Provides the functionality of listing all the .csv data files in th
 Keywords: pre-processing, multiclass, binary, classification, regression
 
 Author: Elizaveta Zinovyeva
+
+Input: student-mat.csv, student-por.csv
+
+Output: student-mat_binary.rds, student-mat_multiclass.rds, student-mat_reg.rds, student-por_binary.rds, student-por_multiclass.rds, student-por_reg.rds
