@@ -13,7 +13,7 @@ files = files(data_path)
 #### order)))
 data_prep = function(file_name, type = "multiclass") {
   if ("dplyr" %in% rownames(installed.packages()) == FALSE) {
-    install.packages("dplyr")
+    install.packages("dplyr", dependencies = TRUE)
   }
   library(dplyr)
   data_frame = read.csv(paste0(data_path, file_name), sep = ",", header = TRUE)
