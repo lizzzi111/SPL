@@ -1,19 +1,9 @@
-Name of Quantlet: SPL_preprocessing_students
+Name of Quantlet: SPL_Q1_preprocessing
 
-Published in: Statistical Programming Languages
+Published in: Statistical programming languages - Student Project on ''School Performance Forecasting''
 
-Description: This file providing the functionality of listing all the .csv data files in the data folder, and preprocess them to the respective question and approach definition: multiclass classification, binary classification, and regression, which is concluded by automatically the storing files in the data folder.
+Description: This file providing the functionality of listing all the .csv data files in the data folder, and preprocess them to the respective question and approach definition for the outcome variable: multiclass classification, binary classification, and regression, which is concluded by automatically storing files in the data folder.
 
-Keywords: preprocessing
+Keywords: pre-processing, multiclass, binary, classification, regression
 
-Author:
-
-Submitted:
-
-Datafile: student-mat.csv, student-por.csv
-
-Input: the folder with the .csv files need for the preprocessing, and the type of data mining question (regression, classification)
-
-Output: preprocessed .RDS files are stored in the data folder
-
-Example: sapply(files, function(x) data_prep(x, "binary"))
+Author: Elizaveta Zinovyeva
