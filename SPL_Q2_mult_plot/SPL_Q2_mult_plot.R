@@ -51,6 +51,10 @@ mult_plot = function(data_path = "./", savePlot = TRUE) {
     par(mfrow = c(3, ceiling(length(files)/3)))
   }
   if (savePlot == TRUE) {
+    # for MAC OS
+    if(Sys.info()['sysname']=="Darwin"){
+      X11(type="cairo")
+    }
     sapply(files, function(x) des(data_path, x))
     savePlot(filename = paste0("./SPL_Q2_mult_plot/plots/plot_", Sys.Date(), 
                                format(Sys.time(), "%H_%M_%S"), ".jpeg"), type = "jpeg")
