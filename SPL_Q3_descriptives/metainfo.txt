@@ -3,7 +3,7 @@ Name of Quantlet: SPL_Q3_descriptives
 Published in: Statistical Programming Languages
 
 Description: Provides the functionality of checking whether the data contains variables that correlation is higher than a given threshold, looks for variables with variance close to zero.
-Removes duplicates, if specified. In the end returns a list variable: nearZerovars - names of variables with small variance (if found), summary - contains a descriptive summary of the data set,
+Looks for duplicates, if specified. In the end returns a list variable: nearZerovars - names of variables with small variance (if found), summary - contains a descriptive summary of the data set,
 correlation - pearson correlation table of numeric variables, highlyCorPredictors - pairs of names of highly correlated variables
 
 Keywords: descriptives, distribution, correlation, prediction, variance, duplicates, zero-variance
