@@ -4,9 +4,10 @@ multiclass = read.csv2("./results_analysis/multiclass.csv")
 # here the functionality for result plots will be proposed
 
 result_plots = function(df, goal_var){
-  if ("ggplot2" %in% rownames(installed.packages()) == FALSE) {
-    install.packages("ggplot2")
-  }
+  
+  list.of.packages <- c("ggplot2")
+  new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+  if(length(new.packages)) install.packages(new.packages, dependencies = TRUE)
   library(ggplot2)
   
   regr_title = "Regression Performance Results"
@@ -26,16 +27,21 @@ result_plots = function(df, goal_var){
       title = bin_title
     }
   }
+  library(pryr)
+
+  boxplot1 = plot(accuracy~model, df, main = title)
   
-  boxplot = plot(accuracy~model, df, main = title)
-  line_plot = ggplot(df, aes(x=model, y=accuracy, colour = Input_type, shape=Input_type, group= Input_type))+
+ # boxplot = ggplot(df, aes(x=model, y=accuracy, colour = Input_type, shape=Input_type, group= Input_type))+
+#    geom_boxplot(size=2) 
+  
+  line_plot = ggplot(df, aes(x=model, y=as.character(deparse(substitute(accuracy))), colour = Input_type, shape=Input_type, group= Input_type))+
     geom_line(size=2) +
     geom_point(size=4) +
     facet_grid(df$Class~.) +
     theme(text = element_text(size=15),
           axis.text.x = element_text(angle=90, hjust=1), plot.title = element_text(size = 15,lineheight=.8, face="bold")) + 
     ggtitle(title)+theme_bw()
-  output = list(boxplot, line_plot)
+  output = list(boxplot = boxplot, lines = line_plot)
   return(output)
 }
 

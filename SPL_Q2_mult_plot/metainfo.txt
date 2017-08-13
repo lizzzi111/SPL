@@ -1,4 +1,4 @@
-Name of Quantlet: SPL_descriptives
+Name of Quantlet: SPL_mult_plot
 
 Published in: Statistical Programming Languages
 

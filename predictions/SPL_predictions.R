@@ -10,7 +10,7 @@ modelsLib = function(formula, data, modellist = c("RF"), model_setup,
   list.of.packages <- c("doParallel","foreach", "caret")
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)) install.packages(new.packages, dependencies = TRUE)
-  library(caret); library(foreach); library(doParallel); library(e1071); library(randomForest)
+  library(caret); library(foreach); library(doParallel)
   
   # Parallelization
   runParallel = detectCores() -1
