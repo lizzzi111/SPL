@@ -3,7 +3,7 @@
 # summary, pairs of highly corelated predictors for a given threshold
 # and variables having variance close to zero
 
-cdesc = function(df, goal_var, dropDuplicates = FALSE, cor_cutoff = 0.9) {
+cdesc = function(df, goal_var, searchDuplicates = FALSE, cor_cutoff = 0.9) {
   
   # zero variance predictors: we want to identify and probably drop
   # predictors with small predictive power load customized function
@@ -13,10 +13,9 @@ cdesc = function(df, goal_var, dropDuplicates = FALSE, cor_cutoff = 0.9) {
   # duplicates make sure we don't have duplicates in the data
   dup = duplicated(df)
   num_dup = dup[dup]
-  if (length(num_dup) != 0 & dropDuplicates == TRUE) {
-    df = df[!dup, ]
+  if (length(num_dup) != 0 & searchDuplicates == TRUE) {
     cat("Duplicates were dropped.\n")
-  } else if (length(num_dup) == 0 & dropDuplicates == TRUE) {
+  } else if (length(num_dup) == 0 & searchDuplicates == TRUE) {
     cat("No duplicates in data.\n")
   }
   
@@ -58,7 +57,7 @@ cdesc = function(df, goal_var, dropDuplicates = FALSE, cor_cutoff = 0.9) {
 
 # EXAMPLE ON THREE TYPES OF DATA FOR OUR BOTH DATASETS REGRESSION
 math_reg = readRDS("./data/student-mat_reg.rds")
-math_reg_desc = cdesc(math_reg, "G3")
+math_reg_desc = cdesc(math_reg, "G3", T)
 
 port_reg = readRDS("./data/student-por_reg.rds")
 port_reg_desc = cdesc(port_reg, "G3")
