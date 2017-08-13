@@ -9,7 +9,7 @@
 # settings (bin, mult, regression) at once.  Therefore, the following
 # functions read data from the file and plots it to a grid of
 # histograms.  The layout is adjusted accordingly to the number of .rds
-# files to plot.  Conclusively saving them into a plots folder Since a
+# files to plot. Since a
 # multiple plot having more than 9 plots is not very readable, our
 # function does not allow to plot more than 9.
 
@@ -29,7 +29,7 @@ des = function(data_path, file, var = df$G3, xlab = "Final Grades", ylab = "Abso
 
 # the following function is the wrapper for des() to produce a series
 # of subplots
-mult_plot = function(data_path = "./", savePlot = TRUE) {
+mult_plot = function(data_path = "./") {
   graphics.off()
   files = list.files(data_path, pattern = ".rds")
   if (length(files) < 1) {
@@ -49,15 +49,6 @@ mult_plot = function(data_path = "./", savePlot = TRUE) {
     par(mfrow = c(2, ceiling(length(files)/2)))
   } else if ((length(files) > 6 & length(files) <= 9)) {
     par(mfrow = c(3, ceiling(length(files)/3)))
-  }
-  if (savePlot == TRUE) {
-    # for MAC OS
-    if(Sys.info()['sysname']=="Darwin"){
-      X11(type="cairo")
-    }
-    sapply(files, function(x) des(data_path, x))
-    savePlot(filename = paste0("./SPL_Q2_mult_plot/plots/plot_", Sys.Date(), 
-                               format(Sys.time(), "%H_%M_%S"), ".jpeg"), type = "jpeg")
   }
   return(sapply(files, function(x) des(data_path, x)))
 }
