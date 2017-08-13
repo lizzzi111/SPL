@@ -6,17 +6,15 @@ check_unique = function(df) {
   unlist(want)
 }
 
-variance_check = function(df, goal_var) {
-  # First we drop the dependent variable, since we check only predictors
-  df1 = df[, !names(df) %in% goal_var]
+variance_check = function(df) {
   
   # we divide into factors and non factors since they will be handled
   # differently
-  factors_ind = sapply(df1, is.factor)
-  non_factors_ind = sapply(df1, is.numeric)
+  factors_ind = sapply(df, is.factor)
+  non_factors_ind = sapply(df, is.numeric)
   
-  factors_df = df1[, factors_ind]
-  non_factors_df = df1[, non_factors_ind]
+  factors_df = df[, factors_ind]
+  non_factors_df = df[, non_factors_ind]
   
   # factors: to calculate variance for a factor variable would be wrong
   # therefore we would aim to look for constants. If some variable has

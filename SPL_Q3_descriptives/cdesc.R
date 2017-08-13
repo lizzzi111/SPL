@@ -3,18 +3,18 @@
 # summary, pairs of highly corelated predictors for a given threshold
 # and variables having variance close to zero
 
-cdesc = function(df, goal_var, searchDuplicates = FALSE, cor_cutoff = 0.9) {
+cdesc = function(df, searchDuplicates = FALSE, cor_cutoff = 0.9) {
   
   # zero variance predictors: we want to identify and probably drop
   # predictors with small predictive power load customized function
   source("./SPL_Q3_descriptives/variance_check.R")
-  suspicious_variables = variance_check(df, goal_var)
+  suspicious_variables = variance_check(df)
   
   # duplicates make sure we don't have duplicates in the data
   dup = duplicated(df)
   num_dup = dup[dup]
   if (length(num_dup) != 0 & searchDuplicates == TRUE) {
-    cat("Duplicates were dropped.\n")
+    cat("Duplicates were found\n")
   } else if (length(num_dup) == 0 & searchDuplicates == TRUE) {
     cat("No duplicates in data.\n")
   }
@@ -23,7 +23,7 @@ cdesc = function(df, goal_var, searchDuplicates = FALSE, cor_cutoff = 0.9) {
   summary = summary(df)
   
   # highly correlated predictors? correlation for a given cutoff value
-  cor = cor(df[, sapply(df, is.numeric) & !(names(df) %in% goal_var)])
+  cor = cor(df[, sapply(df, is.numeric)])
   highCor = abs(cor) >= cor_cutoff
   # we change diagonal elements to false, since corelation of the
   # variable to itself is always 1 and it won't give us any additional
@@ -37,7 +37,7 @@ cdesc = function(df, goal_var, searchDuplicates = FALSE, cor_cutoff = 0.9) {
     cat("There are no highly correlated predictors.\n")
   } else {
     cat("Highly correlated variables were found.\n")
-    print(pairs)
+    print(pairs[!is.na(pairs)])
   }
   
   if (length(suspicious_variables) == 0 & all(sapply(pairs, is.na))) {
@@ -46,10 +46,10 @@ cdesc = function(df, goal_var, searchDuplicates = FALSE, cor_cutoff = 0.9) {
     output = list(nearZerovars = suspicious_variables, summary = summary, 
                   correlation = cor)
   } else if (length(suspicious_variables) == 0 & !all(sapply(pairs, is.na))) {
-    output = list(summary = summary, correlation = cor, highlyCorPredictors = pairs)
+    output = list(summary = summary, correlation = cor, highlyCor = pairs[!is.na(pairs)])
   } else {
     output = list(nearZerovars = suspicious_variables, summary = summary, 
-                  correlation = cor, highlyCorPredictors = pairs)
+                  correlation = cor, highlyCor = pairs[!is.na(pairs)])
   }
   return(output)
 }
@@ -57,21 +57,22 @@ cdesc = function(df, goal_var, searchDuplicates = FALSE, cor_cutoff = 0.9) {
 
 # EXAMPLE ON THREE TYPES OF DATA FOR OUR BOTH DATASETS REGRESSION
 math_reg = readRDS("./data/student-mat_reg.rds")
-math_reg_desc = cdesc(math_reg, "G3", T)
+math_reg_desc = cdesc(math_reg, TRUE, 0.8)
 
 port_reg = readRDS("./data/student-por_reg.rds")
-port_reg_desc = cdesc(port_reg, "G3")
+port_reg_desc = cdesc(port_reg, TRUE)
 
 # BINARY
 math_bin = readRDS("./data/student-mat_binary.rds")
-math_bin_deasc = cdesc(math_bin, "G3")
+math_bin_deasc = cdesc(math_bin,TRUE)
 
 port_bin = readRDS("./data/student-por_binary.rds")
-port_bin_desc = cdesc(port_bin, "G3")
+port_bin_desc = cdesc(port_bin, TRUE)
 
 # MULTICLASS
 math_mul = readRDS("./data/student-mat_multiclass.rds")
-math_mul_desc = cdesc(math_mul, "G3")
+math_mul_desc = cdesc(math_mul, TRUE)
 
 port_mul = readRDS("./data/student-por_multiclass.rds")
-port_mul_desc = cdesc(port_mul, "G3")
+port_mul_desc = cdesc(port_mul, "G3",TRUE)
+
