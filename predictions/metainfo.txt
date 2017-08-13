@@ -1,20 +1,15 @@
-Name of Quantlet: SPL_predictions
+Name of Quantlet: SPL_Q5_predictions
 
-Published in: Statistical Programming Languages
+Published in: Statistical programming languages - Student Project on ''School Performance Forecasting''
 
-Description: Functions providing predictions in three given formats: binary, multi class classification, regression
+Description: Provides four different prediction results from functions in three given formats: binary, multiclass classification and regression, considering different input settings.
 
-Keywords: forecasting, decision tree, SVM, regression, random Forest, caret
-Author:
+Keywords: prediciton, forecasting, decision tree, support vector machines, random Forest, neural network, caret
 
-Submitted:
+Author: Elizaveta Zinovyeva
 
-Datafile: 
+See also: SPL_Q1_preprocessing
 
-Input: 	student-mat_binary.rds, student-mat_multiclass.rds, student-mat_reg.rds,
-	student-por_binary.rds, student-por_multiclass.rds, student-por_reg.rds 
+Input: 	student-mat_binary.rds, student-mat_multiclass.rds, student-mat_reg.rds, student-por_binary.rds, student-por_multiclass.rds, student-por_reg.rds 
 
-Output: mat_bin_fitA.RDS, mat_bin_fitB.RDS, mat_bin_fitC.RDS, mat_mul_fitA.RDS,   		mat_mul_fitB.RDS, mat_mul_fitC.RDS, mat_reg_fitA.RDS, mat_reg_fitB.RDS,   		mat_reg_fitC.RDS, por_bin_fitA.RDS, por_bin_fitB.RDS, por_bin_fitC.RDS, 
-	por_mul_fitA.RDS, por_mul_fitB.RDS, por_mul_fitC.RDS, por_reg_fitA.RDS,   		por_reg_fitB.RDS, por_reg_fitC.RDS 
-
-Example: 
+Output: mat_bin_fitA.RDS, mat_bin_fitB.RDS, mat_bin_fitC.RDS, mat_mul_fitA.RDS, mat_mul_fitB.RDS, mat_mul_fitC.RDS, mat_reg_fitA.RDS, mat_reg_fitB.RDS, mat_reg_fitC.RDS, por_bin_fitA.RDS, por_bin_fitB.RDS, por_bin_fitC.RDS,  por_mul_fitA.RDS, por_mul_fitB.RDS, por_mul_fitC.RDS, por_reg_fitA.RDS, por_reg_fitB.RDS, por_reg_fitC.RDS 
