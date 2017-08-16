@@ -6,19 +6,18 @@
 
 
 modelsLib = function(formula, data, modellist = c("RF"), model_setup, 
-                              metric , model_control = NULL, preProcess = NULL) {
-  list.of.packages <- c("doParallel","foreach", "caret")
-  new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+                     metric , model_control = NULL, pre_pr = NULL) {
+  list.of.packages = c("doParallel","foreach", "caret")
+  new.packages = list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)) install.packages(new.packages, dependencies = TRUE)
   library(caret); library(foreach); library(doParallel)
   
   # Parallelization
-  runParallel = detectCores() -1
   # Setup up parallel backend
   # Detect number of cores and register all of them minus 1 as our working cluster
-  cl = makeCluster(min(detectCores()-1, runParallel))
+  cl = makeCluster(ifelse(detectCores()>1, detectCores()-1, 1))
   registerDoParallel(cl)
-  cat(paste(getDoParWorkers(),"cores are registered to a cluster.\n"))
+  cat(paste(getDoParWorkers(),"core/s is/are registered to a cluster.\n"))
   
   start.time = Sys.time()
   
@@ -36,31 +35,25 @@ modelsLib = function(formula, data, modellist = c("RF"), model_setup,
   
   # Training use caret package
   cat("Start model training \n")
-  modelLibrary = list()
+  model_lib = list()
   for (model in modellist) {
-    cat(paste("Start training model", model, "at", Sys.time(), "\n"))
-    modelObject = try(do.call(
+    cat(paste("Start training", model, "at", Sys.time(), "\n"))
+    model_obj = try(do.call(
       caret::train, c(list(form = formula, 
                            data = data, 
                            trControl = model_control, 
-                           preProcess = preProcess,
-                           metric = metric), 
-                      
-                      model_setup[[model]])))
-    
-    if ("train" %in% class(modelObject)) {
-      modelLibrary[[model]] = modelObject
+                           preProcess = pre_pr,
+                           metric = metric), model_setup[[model]])))
+    if ("train" %in% class(model_obj)) {
+      model_lib[[model]] = model_obj
     } else {
-      warning("Failed to train model ", model, ". ", modelObject)
+      warning("Failed to train", model, ". ", model_obj)
     }
-    rm(modelObject)
+    rm(model_obj)
   }
   end.time = Sys.time()  # Print time
   cat(paste("Training time:", round(end.time - start.time,2), "\n"))
-  
   stopCluster(cl)
   cat("Cluster closed")
-  
-  return(modelLibrary)
+  return(model_lib)
 }
-

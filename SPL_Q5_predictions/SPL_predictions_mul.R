@@ -1,6 +1,6 @@
-source(file = "./predictions/SPL_predictions.R")
-source(file = "./predictions/metrics_for_evaluation.R")
-source(file = "./predictions/model_setup.R")
+source(file = "./SPL_Q5_predictions/SPL_predictions.R")
+source(file = "./SPL_Q5_predictions/metrics_for_evaluation.R")
+source(file = "./SPL_Q5_predictions/model_setup.R")
 
 data_mul_mat = readRDS("./data/student-mat_multiclass.rds")
 
@@ -16,7 +16,7 @@ max(mat_mul_fitA$NN$results$Accuracy, na.rm = TRUE)
 max(mat_mul_fitA$RF$results$Accuracy)
 max(mat_mul_fitA$DT$results$Accuracy)
 
-saveRDS(mat_mul_fitA, "./predictions/models/mat_mul_fitA.RDS")
+saveRDS(mat_mul_fitA, "./SPL_Q5_predictions/models/mat_mul_fitA.RDS")
 
 # for the Naive Bayes in the paper G2 was used in the setting A
 # we check the error with our custom function
@@ -34,7 +34,7 @@ max(mat_mul_fitB$NN$results$Accuracy, na.rm = TRUE)
 max(mat_mul_fitB$RF$results$Accuracy)
 max(mat_mul_fitB$DT$results$Accuracy)
 
-saveRDS(mat_mul_fitB, "./predictions/models/mat_mul_fitB.RDS")
+saveRDS(mat_mul_fitB, "./SPL_Q5_predictions/models/mat_mul_fitB.RDS")
 # for the Naive Bayes in the paper G1 was used in the setting B
 # we check the error with our custom function
 pcc(data_mul_mat$G1,data_mul_mat$G3)
@@ -51,7 +51,7 @@ max(mat_mul_fitC$NN$results$Accuracy)
 max(mat_mul_fitC$RF$results$Accuracy)
 max(mat_mul_fitC$DT$results$Accuracy)
 
-saveRDS(mat_mul_fitC, "./predictions/models/mat_mul_fitC.RDS")
+saveRDS(mat_mul_fitC, "./SPL_Q5_predictions/models/mat_mul_fitC.RDS")
 # for the Naive Bayes in the paper the most frequent value was used in the setting C
 # we check the error with our custom function
 # we won't do it using CV, we will come to the same value
@@ -74,7 +74,7 @@ max(por_mul_fitA$NN$results$Accuracy, na.rm = TRUE)
 max(por_mul_fitA$RF$results$Accuracy)
 max(por_mul_fitA$DT$results$Accuracy)
 
-saveRDS(por_mul_fitA, "./predictions/models/por_mul_fitA.RDS")
+saveRDS(por_mul_fitA, "./SPL_Q5_predictions/models/por_mul_fitA.RDS")
 
 # for the Naive Bayes in the paper G2 was used in the setting A
 # we check the error with our custom function
@@ -92,7 +92,7 @@ max(por_mul_fitB$NN$results$Accuracy, na.rm = TRUE)
 max(por_mul_fitB$RF$results$Accuracy)
 max(por_mul_fitB$DT$results$Accuracy)
 
-saveRDS(por_mul_fitB, "./predictions/models/por_mul_fitB.RDS")
+saveRDS(por_mul_fitB, "./SPL_Q5_predictions/models/por_mul_fitB.RDS")
 # for the Naive Bayes in the paper G1 was used in the setting B
 # we check the error with our custom function
 pcc(data_mul_por$G1,data_mul_por$G3)
@@ -109,7 +109,7 @@ max(por_mul_fitC$NN$results$Accuracy)
 max(por_mul_fitC$RF$results$Accuracy)
 max(por_mul_fitC$DT$results$Accuracy)
 
-saveRDS(por_mul_fitC, "./predictions/models/por_mul_fitC.RDS")
+saveRDS(por_mul_fitC, "./SPL_Q5_predictions/models/por_mul_fitC.RDS")
 # for the Naive Bayes in the paper the average output value was used in the setting C
 # we check the error with our custom function
 # we won't do it using CV, we will come to the same value
