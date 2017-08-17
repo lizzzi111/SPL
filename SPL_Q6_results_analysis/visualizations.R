@@ -27,14 +27,22 @@ result_plots = function(df, title = NULL) {
   }
   
   
-  boxplot = ggplot(aes(y = accuracy, x = model), data = df) + geom_boxplot() + 
-    scale_fill_grey() + theme_bw() + labs(y = ax_title_y) + ggtitle(title)
+  boxplot = ggplot(aes(y = accuracy, x = model), data = df) + 
+            geom_boxplot() + 
+            theme_bw() + 
+            labs(y = ax_title_y) + 
+            ggtitle(title)
   
   line_plot = ggplot(df, aes(x = model, y = accuracy, colour = Input_type, 
-                             shape = Input_type, group = Input_type)) + geom_line(size = 2) + 
-    geom_point(size = 4) + facet_grid(df$Class ~ .) + theme(text = element_text(size = 15), 
-                                                            axis.text.x = element_text(angle = 90, hjust = 1), plot.title = element_text(size = 15, 
-                                                                                                                                         lineheight = 0.8, face = "bold")) + ggtitle(title) + theme_bw() + 
+                             shape = Input_type, group = Input_type)) +
+    geom_line(size = 2) + 
+    geom_point(size = 4) + 
+    facet_grid(df$Class ~ .) + 
+    theme(text = element_text(size = 15), 
+          axis.text.x = element_text(angle = 90, hjust = 1), 
+          plot.title = element_text(size = 15,lineheight = 0.8, face = "bold")) + 
+    ggtitle(title) + 
+    theme_bw() + 
     labs(y = ax_title_y)
   
   output = list(boxplot = boxplot, lines = line_plot)
