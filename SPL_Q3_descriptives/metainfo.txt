@@ -2,18 +2,10 @@ Name of Quantlet: SPL_Q3_descriptives
 
 Published in: Statistical Programming Languages
 
-Description: Provides the functionality of checking whether the data contains variables that correlation is higher than a given threshold, looks for variables with variance close to zero.
-Looks for duplicates, if specified. In the end returns a list variable: nearZerovars - names of variables with small variance (if found), summary - contains a descriptive summary of the data set,
-correlation - pearson correlation table of numeric variables, highlyCorPredictors - pairs of names of highly correlated variables
+Description: Provides the functionality of checking whether the data contains variables that correlation is higher than a given threshold, looks for variables with variance close to zero. Looks for duplicates, if specified. In the end returns a list variable: nearZerovars - names of variables with small variance (if found), summary - contains a descriptive summary of the data set, correlation - pearson correlation table of numeric variables, highlyCorPredictors - pairs of names of highly correlated variables
 
 Keywords: descriptives, distribution, correlation, prediction, variance, duplicates, zero-variance
-Author:
 
-Submitted:
-
-Datafile: 
+Author: Johanna Boldt, Malte Bovians, Elizaveta Zinovyeva
 
 Input: student-mat_binary.rds, student-mat_multiclass.rds, student-mat_reg.rds, student-por_binary.rds, student-por_multiclass.rds, student-por_reg.rds
-
-Output: 
-Example: math_reg = readRDS("./data/student-mat_reg.rds")
