@@ -49,9 +49,9 @@ result_plots = function(df, title = NULL) {
   return(output)
 }
 
-ff = result_plots(binary, "Binary Classification Performance")
-ff$boxplot
-ff$lines
+bin = result_plots(binary, "Binary Classification Performance")
+bin$boxplot
+bin$lines
 mul = result_plots(multiclass, "Multiclass Classification Performance")
 mul$boxplot
 mul$lines
