@@ -1,6 +1,6 @@
 Name of Quantlet: SPL_Q2_mult_plot
 
-Published in: Statistical Programming Languages
+Published in: Statistical programming languages - Student Project on ''School Performance Forecasting''
 
 Description: Provides the functionality of the following quantlet aims to accelerate th replication of the paper through 
 visualization of distribution of dependent variable for all the .rds data files contained in the passed as a parameter folder.
@@ -10,6 +10,8 @@ to interpret, so it was decided to limit the maximum number of subplots to 9.
 Keywords: descriptives, distribution, visualization, multiple, plot, histogram
 
 Author: Johanna Boldt, Malte Bovians, Elizaveta Zinovyeva
+
+See also: SPL_Q1_preprocessing
 
 Datafile: Data folder path "./data/"
 
