@@ -11,6 +11,6 @@ e.g. comparison of the setting of the variables given in the paper to the settin
 
 Predictions are made in 3 types: regression, binary and multiclass classification
 
-     Note: for appropriate functioning of quantlets, one should start either by running the .R project or by setting the  working directory to "./SPL/". All the paths in quantlets are set relatively to this working directory.
+     Note: for appropriate functioning of quantlets, one should start either by working from the Paper.Rproj project or by setting the  working directory to "./SPL/". All the paths in quantlets are set relatively to this working directory.
 
 Cortez, Paulo, and Alice Maria Gonçalves Silva. "Using data mining to predict secondary school student performance." (2008).
