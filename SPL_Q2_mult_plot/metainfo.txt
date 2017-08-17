@@ -7,14 +7,12 @@ visualization of distribution of dependent variable for all the .rds data files 
 Moreover, it is designed to adjust the layout to the number of files. Distribution of more than 9 plots on one layout is difficult
 to interpret, so it was decided to limit the maximum number of subplots to 9.
 
-Keywords: descriptives, distribution, visualization
-Author:
+Keywords: descriptives, distribution, visualization, multiple, plot, histogram
 
-Submitted:
+Author: Johanna Boldt, Malte Bovians, Elizaveta Zinovyeva
 
 Datafile: Data folder path "./data/"
 
-Input: 
+Input: student-mat_binary.rds, student-mat_multiclass.rds, student-mat_reg.rds, student-por_binary.rds, student-por_multiclass.rds, student-por_reg.rds
 
-Output: 
-Example: 
+Output: Distribution G3.png
