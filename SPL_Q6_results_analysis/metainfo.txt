@@ -1,0 +1,15 @@
+Name of Quantlet: SPL_Q6_results_analysis
+
+Published in: Statistical programming languages - Student Project on ''School Performance Forecasting''
+
+Description: Provides functionality of results visualization
+
+Keywords: ggplot, visualization, boxplot
+
+Author: Elizaveta Zinovyeva
+
+See also:
+
+Input: 	binary_fin.csv, regression_fin.csv, multiclass_fin.csv
+
+Output:  
