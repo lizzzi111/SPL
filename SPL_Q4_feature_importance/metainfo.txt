@@ -6,7 +6,9 @@ Description: Provides the functionality of feature importance modelling and its 
 
 Keywords: feature importance, tuning, selection, modelling, regression, classification, random forest, mars, stepwise
 
-Author: Elizaveta Zinovyeva
+Author: Johanna Boldt, Malte Bovians, Elizaveta Zinovyeva
+
+See also: SPL_Q1_preprocessing
 
 Input: student-mat_binary.rds, student-mat_reg.rds, student-por_binary.rds,  student-por_reg.rds
 
