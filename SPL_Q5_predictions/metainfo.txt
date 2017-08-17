@@ -6,9 +6,9 @@ Description: Provides four different prediction results from functions in three 
 
 Keywords: prediciton, forecasting, decision tree, support vector machines, random Forest, neural network, caret
 
-Author: Elizaveta Zinovyeva
+Author: Johanna Boldt, Malte Bovians, Elizaveta Zinovyeva
 
-See also: SPL_Q1_preprocessing
+See also: SPL_Q1_preprocessing, SPL_Q4_feature_importance
 
 Input: 	student-mat_binary.rds, student-mat_multiclass.rds, student-mat_reg.rds, student-por_binary.rds, student-por_multiclass.rds, student-por_reg.rds 
 
