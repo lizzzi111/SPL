@@ -5,8 +5,8 @@ multiclass = read.csv2("./SPL_Q6_results_analysis/multiclass_fin.csv")
 
 result_plots = function(df, title = NULL) {
   
-  list.of.packages <- c("ggplot2")
-  new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[, 
+  list.of.packages = c("ggplot2")
+  new.packages = list.of.packages[!(list.of.packages %in% installed.packages()[, 
                                                                                 "Package"])]
   if (length(new.packages)) 
     install.packages(new.packages, dependencies = TRUE)
