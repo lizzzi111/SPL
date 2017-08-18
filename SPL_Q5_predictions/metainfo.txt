@@ -2,7 +2,7 @@ Name of Quantlet: SPL_Q5_predictions
 
 Published in: Statistical programming languages - Student Project on ''School Performance Forecasting''
 
-Description: Provides four different prediction results from functions in three given formats: binary, multiclass classification and regression, considering different input settings.
+Description: 'Provides four different prediction results from functions in three given formats: binary, multiclass classification and regression, considering different input settings.'
 
 Keywords: prediciton, forecasting, decision tree, support vector machines, random Forest, neural network, caret
 
