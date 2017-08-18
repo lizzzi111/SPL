@@ -2,13 +2,11 @@ Name of Quantlet: SPL_Q1_preprocessing
 
 Published in: Statistical programming languages - Student Project on ''School Performance Forecasting''
 
-Description: Provides the functionality of listing all the .csv data files in the data folder, and preprocess them to the respective question and approach definition for the outcome variable: multiclass classification, binary classification, and regression, which is concluded by automatically storing files in the data folder.
+Description: 'Provides the functionality of listing all the .csv data files in the data folder, and preprocess them to the respective question and approach definition for the outcome variable: multiclass classification, binary classification, and regression, which is concluded by automatically storing files in the data folder.'
 
 Keywords: pre-processing, multiclass, binary, classification, regression
 
 Author: Johanna Boldt, Malte Bovians, Elizaveta Zinovyeva
-
-Submitted:
 
 Input: student-mat.csv, student-por.csv
 
