@@ -11,8 +11,6 @@ Keywords: descriptives, distribution, visualization, multiple, plot, histogram
 
 Author: Johanna Boldt, Malte Bovians, Elizaveta Zinovyeva
 
-Submitted: 18. August 2017
-
 See also: SPL_Q1_preprocessing
 
 Datafile: Data folder path "./data/"
