@@ -2,7 +2,7 @@ Name of Quantlet: SPL_Q4_feature_importance
 
 Published in: Statistical programming languages - Student Project on ''School Performance Forecasting''
 
-Description: Provides the functionality of feature importance modelling and its visualization. Wrapper for random forest, stepwise linear regression, glm, MARS models.
+Description: 'Provides the functionality of feature importance modelling and its visualization. Wrapper for random forest, stepwise linear regression, glm, MARS models.'
 
 Keywords: feature importance, tuning, selection, modelling, regression, classification, random forest, mars, stepwise
 
