@@ -2,7 +2,7 @@ Name of Quantlet: SPL_Q6_results_analysis
 
 Published in: Statistical programming languages - Student Project on ''School Performance Forecasting''
 
-Description: Provides functionality of result visualizations for prediction models.
+Description: 'Provides functionality of result visualizations for prediction models.'
 
 Keywords: ggplot, visualization, boxplot
 
