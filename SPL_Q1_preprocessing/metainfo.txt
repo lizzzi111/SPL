@@ -8,6 +8,8 @@ Keywords: pre-processing, multiclass, binary, classification, regression
 
 Author: Johanna Boldt, Malte Bovians, Elizaveta Zinovyeva
 
+Submitted:
+
 Input: student-mat.csv, student-por.csv
 
 Output: student-mat_binary.rds, student-mat_multiclass.rds, student-mat_reg.rds, student-por_binary.rds, student-por_multiclass.rds, student-por_reg.rds
